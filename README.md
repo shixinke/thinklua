@@ -52,5 +52,6 @@ thinklua是一个非常简单的web框架，目前只有请求分发、显示模
 
 ##contact
 author:shixinke
+
 email:ishixinke@qq.com
 
