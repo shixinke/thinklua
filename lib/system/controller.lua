@@ -60,6 +60,11 @@ function _M.display(self, tpl, data)
         self.layout = nil
     end
     local view     = template.new(tpl, self.layout)
+    local caching = true
+    if config.debug then
+        caching = false
+    end
+    template.caching(caching)
     if not view then
         func.show_404('initialize the template failed,plesase check the template if exists')
         return
