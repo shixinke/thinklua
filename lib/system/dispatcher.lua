@@ -36,7 +36,7 @@ function _M.dispatch()
         else
             controller = mat[1]
             action = mat[2]
-            local args = {}
+            args = {}
             for i = 3, count, 2 do
                 if mat[i+1] then
                     args[mat[i]] = mat[i+1]

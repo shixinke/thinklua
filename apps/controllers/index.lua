@@ -8,6 +8,7 @@ end
 
 function _M.index(self)
     local province = require 'models.province'
+    ngx.say(self:get('id'))
     local obj = province:new()
     self:assign('name', 'perfect value')
     self:display()

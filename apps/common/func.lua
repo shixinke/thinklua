@@ -32,6 +32,16 @@ function _M.extends_model(model)
     return _M.extends(model, base_model)
 end
 
+function _M.merge(tab1, tab2)
+    local obj = tab1 or {}
+    for k, v in pairs(tab2) do
+        if v ~= nil then
+            obj[k] = v
+        end
+    end
+    return obj
+end
+
 function _M.explode(delimiter, str)
     local tab = {}
     if type(str) ~= 'string' or delimiter == nil then
