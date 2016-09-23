@@ -27,6 +27,7 @@ thinklua是一个非常简单的web框架，目前只有请求分发、显示模
 
     lua_code_cache    on;
     lua_package_path '/the/root/path/thinklua/lib/?.lua;;';
+	init_by_lua_file        '/the/root/path/thinklua/apps/init.lua';
 
     server {
         listen 8060;
