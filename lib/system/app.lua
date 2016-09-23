@@ -2,10 +2,10 @@ local _M = {
     _VERSION = '0.01'
 }
 
-local router = require 'system.router'
+local dispatcher = require 'system.dispatcher'
 
 function _M.run()
-    router.route()
+    dispatcher.dispatch()
 end
 
 return _M

@@ -3,28 +3,14 @@ local _M = {
 }
 
 local ngx_req = ngx.req
-local assign_data = {}
+local view = require 'system.view'
 
-local template = require 'resty.template'
-local layout = 'layouts/layout.html'
-
-function _M.init(self)
-    self.template = template
-    if self.withoutLayout then
-        self.layout = nil
-    else
-        self.layout = layout
-    end
+function _M.init_view(self)
+    self.view = view:new()
 end
 
 function _M.assign(self, name, value)
-    if type(name) == 'table' then
-        for i, v in pairs(name) do
-            assign_data[i] = v
-        end
-    else
-        assign_data[name] = value
-    end
+    self.view:assign(name, value)
 end
 
 function _M.get(name)
@@ -56,23 +42,7 @@ function _M.display(self, tpl, data)
     if not tpl then
         tpl = self.controller..'/'..self.action..'.html'
     end
-    if self.withoutLayout then
-        self.layout = nil
-    end
-    local view     = template.new(tpl, self.layout)
-    local caching = true
-    if config.debug then
-        caching = false
-    end
-    template.caching(caching)
-    if not view then
-        func.show_404('initialize the template failed,plesase check the template if exists')
-        return
-    end
-    for k, v in pairs(assign_data) do
-        view[k] = v
-    end
-    view:render()
+    self.view:display(tpl, data)
 end
 
 return _M

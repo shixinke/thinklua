@@ -7,8 +7,9 @@ function _M.new()
 end
 
 function _M.index(self)
-    self.withoutLayout = true
-    self:assign('name', 'value')
+    local province = require 'models.province'
+    local obj = province:new()
+    self:assign('name', 'perfect value')
     self:display()
 end
 
