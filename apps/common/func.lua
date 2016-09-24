@@ -20,7 +20,11 @@ function _M.is_empty_table(tab)
     for _, _ in pairs(tab) do
         num = num + 1
     end
-    return num > 0 and true or false
+    if num > 0 then
+        return false
+    else
+        return true
+    end
 end
 
 function _M.extends(child, parent)
@@ -40,6 +44,17 @@ function _M.merge(tab1, tab2)
         end
     end
     return obj
+end
+
+function _M.in_array(ele, tab)
+    local matched
+    for i, v in tab do
+        if v == ele then
+            matched = i
+            break
+        end
+    end
+    return matched
 end
 
 function _M.explode(delimiter, str)
@@ -62,6 +77,34 @@ function _M.explode(delimiter, str)
         m = iterator()
     end
     return tab
+end
+
+function _M.url_parse(url)
+    local url_tab = {path = nil, params = {} }
+    if url == nil then
+        return nil, 'the url is nil'
+    end
+    local m, err = regex.match(url, '([^\\?]+)\\?([^\\?]+)')
+    if not m then
+        url_tab.path = url
+        return url_tab, err
+    end
+    url_tab.path = m[1]
+    local iterator, err = regex.gmatch(m[2], '([a-zA-Z0-9_-]+)=([a-zA-Z0-9_-]+)', 'ijso')
+    if not iterator then
+        url_tab.params = {}
+        return url_tab, err
+    end
+    local m, err = iterator()
+    if not m then
+        url_tab.params = {}
+        return url_tab, err
+    end
+    while m do
+        url_tab.params[m[1]] = m[2]
+        m = iterator()
+    end
+    return url_tab
 end
 
 function _M.implode(delimiter, tab)

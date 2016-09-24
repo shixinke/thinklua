@@ -5,14 +5,24 @@ local _M = {
 local ngx_var = ngx.var
 local regex = ngx.re
 local log = ngx.log
+local router = require 'system.router':new()
 local base_controller = require 'system.controller'
 
 
-function _M.dispatch()
+function _M.parse(self)
+    local url_tab = router:route()
+    if url_tab == nil then
+        url_tab = {path = ngx_var.uri, params = {}}
+    end
+    return self.dispatch(url_tab)
+end
+
+function _M.dispatch(url_tab)
     local default_controller = config.routes.default_controller or 'index'
     local default_action = config.routes.default_action or 'index'
-    local uri = ngx_var.uri
-    local controller,action,args
+    local uri = url_tab.path
+    local controller,action
+    local args = url_tab.params or {}
     if uri == '/' then
         controller = default_controller
         action = default_action
@@ -36,7 +46,6 @@ function _M.dispatch()
         else
             controller = mat[1]
             action = mat[2]
-            args = {}
             for i = 3, count, 2 do
                 if mat[i+1] then
                     args[mat[i]] = mat[i+1]
@@ -50,7 +59,7 @@ function _M.dispatch()
         func.show_404('the controller file is not exists or it is not a controller module')
     else
         if not m_controller[action] or type(m_controller[action]) ~= 'function' then
-            func.show_404('the action '..action..'is not exists')
+            func.show_404('the action '..action..' is not exists')
         end
         local mt = {__index = base_controller}
         setmetatable(m_controller, mt)
@@ -63,7 +72,10 @@ function _M.dispatch()
         m_controller.params = args
         return m_controller[action](m_controller)
     end
+
 end
+
+
 
 
 

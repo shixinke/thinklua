@@ -26,8 +26,8 @@ thinklua是一个非常简单的web框架，目前只有请求分发、显示模
 只需要在nginx添加如下配置即可：
 
     lua_code_cache    on;
-    lua_package_path '/the/root/path/thinklua/lib/?.lua;;';
-	init_by_lua_file        '/the/root/path/thinklua/apps/init.lua';
+    lua_package_path '/the/root/path/thinklua/apps/?.lua;/the/root/path/thinklua/lib/?.lua;;';
+    init_by_lua_file  '/the/root/path/thinklua/apps/init.lua';
 
     server {
         listen 8060;
@@ -46,7 +46,6 @@ thinklua是一个非常简单的web框架，目前只有请求分发、显示模
 
 ##to do
 
-> * 支持自定义路由
 > * 性能优化
 > * 添加更多session,cookie等类库的支持
 

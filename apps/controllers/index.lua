@@ -19,4 +19,8 @@ function _M.hello(self)
     self:display()
 end
 
+function _M.lists(self)
+    ngx.say('index lists')
+end
+
 return _M

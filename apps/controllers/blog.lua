@@ -12,4 +12,9 @@ function _M.index(self)
     self:display()
 end
 
+function _M.detail(self)
+    ngx.say('detail')
+    ngx.say(self:get('id'))
+end
+
 return _M

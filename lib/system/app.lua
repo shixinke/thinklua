@@ -5,7 +5,7 @@ local _M = {
 local dispatcher = require 'system.dispatcher'
 
 function _M.run()
-    dispatcher.dispatch()
+    dispatcher:parse()
 end
 
 return _M
