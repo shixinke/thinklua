@@ -52,20 +52,20 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
     }
 
 ##使用手册
-* [控制器]（#controller）
- + 控制器定义(#controller_definition)
- + 基类控制器(#base_controller)
- + 访问URL(#visit_the_controller)
-* 模型(#model)
- + 模型定义(#model_definition)
- + 基类模型(#base_model)
-* 视图(#view)
- + 视图使用(#view_usage)
-* 配置(#configuration)
- + 配置定义(#configuration_definition)
- + 默认配置项说明(#configuration_item)
-* 路由(#route)
- + 路由规则(#route_rules)
+* [控制器](#controller)
+ + [控制器定义](#controller_definition)
+ + [基类控制器](#base_controller)
+ + [访问URL](#visit_the_controller)
+* [模型](#model)
+ + [模型定义](#model_definition)
+ + [基类模型](#base_model)
+* [视图](#view)
+ + [视图使用](#view_usage)
+* [配置](#configuration)
+ + [配置定义](#configuration_definition)
+ + [默认配置项说明](#configuration_item)
+* [路由](#route)
+ + [路由规则](#route_rules)
 
 ###控制器
 ======
