@@ -111,6 +111,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 参数说明：name为模板变量的名称(可以是一个包含键值对的table)
             value为模板变量的值
 + 例如：
+
     function _M.read(self)
         self:assign("name", "shixinke")
         self:assign({city = "hz", province = "zj"})
@@ -125,6 +126,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 参数说明：tpl为模板文件(默认为nil,系统自动定位到当前控制器及当前方法，如/blog/read即为 views/blog/read.html)
             data为模板变量(默认为nil)
 + 例如：
+
     function _M.read(self)
         self:assign("name", "shixinke")
         self:assign({city = "hz", province = "zj"})
@@ -143,6 +145,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 用法：get(name)
 + 参数说明：name为get请求或路由参数中的键名(name为空时表示所有get请求参数及路由参数)
 + 例如：
+
     function _M.read(self)
         local id = self:get('id')
     end
@@ -153,6 +156,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 用法：post(name)
 + 参数说明：name为post请求参数中的键名(name为空时表示所有post请求参数)
 + 例如：
+
     function _M.read(self)
         local id = self:post('id')
     end
@@ -165,6 +169,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 +           message 为提示信息
 +           data 为返回数据
 + 例如：
+
     function _M.read(self)
         self:json(200, 'failed', {id = 100})
     end
@@ -178,6 +183,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 +           data 为返回数据
 +           callback 为回调函数
 + 例如：
+
     function _M.read(self)
         self:jsonp(200, 'failed', {id = 100}, 'callback')
     end
