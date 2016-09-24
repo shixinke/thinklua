@@ -67,7 +67,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 * [路由](#route)
  + [路由规则](#route_rules)
 
-控制器
+<h3 id="controller">控制器</h3>
 ======
 
 模型
