@@ -132,7 +132,9 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
         self:assign({city = "hz", province = "zj"})
         self:display()
     end
+    
   或
+  
     function _M.read(self)
         self:assign("name", "shixinke")
         self:assign({city = "hz", province = "zj"})
@@ -193,17 +195,164 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 当访问URL：http://domain.com/blog/detail时，对应的文件为apps/controllers/blog.lua，访问的是blog控制器的detail方法
 
 模型
-======
+===
+###模型定义
 
+如定义一个province模型，在apps/models目录下面建立一个province.lua的文件：
+
+定义如下：
+
+    local _M = {
+        _VERSION = '0.01',
+        table = 'province'
+    }
+    func.extends_model(_M)
+    return _M
+   
+说明:属性table表示模型对应的表名
+
+   func.extends_model(_M)表示当前模型继承自基类模型
+    
+###基类模型
+####属性
+* config : 数据库连接配置
+* table     ：数据库表名
+* db     ：mysql连接对象
+###方法
+* [fields : 设置查询字段](#fields)
+* [table : 设置查询表名](#table)
+* [where : 设置查询条件](#where)
+* [group : 设置分组](#group)
+* [order : 设置排序](#order)
+* [limit : 设置查询条数限制](#limit)
+* [query : 执行sql查询语句](#query)
+* [exec : 执行非查询sql语句](#exec)
+* [find : 查询单条数据](#find)
+* [findAll : 查询多条数据](#findAll)
+* [count : 查询数据条目数](#count)
+* [insert : 插入数据](#insert)
+* [update : 更新数据](#update)
+* [delete : 删除数据](#delete)
+* [close : 关闭数据库连接](#close)
+
+注：模型基类实现链式操作的方法
+
+#### fields
+======
++ 功能：设置查询字段
++ 用法：fields(field)
++ 参数说明：field表示要查询的字段(可以是字符串也可以是table)
++ 例如：
+
+    function _M.lists(self)
+        self:fields('id,name'):findAll('table_name')
+        -- self:fields(array('id', 'name')):findAll('table_name')
+    end
+
+#### table
+======
++ 功能：设置查询的表名
++ 用法：table(table_name)
++ 参数说明：table_name表示要查询的表名
++ 例如：
+
+    function _M.lists(self)
+        self:fields('id,name'):table('table_name'):findAll()
+    end
+    
+    
 视图
 ======
+框架中的视图使用的是lua-resty-template模板引擎，更多内容请参照:[lua-resty-template](https://github.com/bungle/lua-resty-template)
 
 配置
 ======
+配置文件在apps/config/config.lua文件中
+
+###默认配置
+
+如：
+
+    local config = {
+        debug = true,
+        database = {
+            host = '127.0.0.1',
+            port = 3306,
+            user = 'shixinke',
+            password = 'info@shixinke.com',
+            database = 'geoip',
+            charset = 'utf8',
+            timeout = 1000,
+            max_idle_timeout = 6000,
+            pool_size = 100
+        },
+        cache = {
+            host = '127.0.0.1',
+            port = 6379,
+            timeout = 1000,
+            max_idle_timeout = 6000,
+            pool_size = 1000
+        },
+        routes = {
+            default_controller = 'index',
+            router_status = 'on',
+            rules = {
+                {method = 'get', pattern = '/blog/:id', url = '/blog/detail'},
+                {method = 'get', pattern = '/lists/index', url = '/index/lists?id=11'}
+            }
+        },
+        pages = {
+            charset = 'UTF-8',
+            not_found = '',
+            server_error = ''
+        }
+    
+    }
+    return config;
+
+* debug：表示应用是否开启debug模式
+* database:表示数据库相关配置
+* cache:为redis相关配置
+* routes :为路由URL相关配置
+ + default_controller:默认控制器
+ + default_action:默认方法
+ + router_status：是否开启路由配置
+ + rules:路由规则
+* pages :表示页面相关的配置
+ + charset:表示页面的编码
+ + not_found:表示404页面url
+ + server_error:表示50x页面url
+    
+###读取配置
+
+因为配置文件中项目初始化时已经加载，不需要在使用时加载配置文件，是一个全局变量，因此可以使用config.database.host类似的形式来读取配置文件
 
 路由
-======
+===
 
+只需要在配置中打开路由开关即可，默认是根据URL自动匹配
+
+###路由规则
+* 转发
+如：
+   {method = 'get', pattern = '/lists/index', url = '/index/lists?id=11'}
+
+   表示当请求是/lists/index这个url时，其实它访问的是/index/lists?id=11这个url
+   
+* ：传递参数
+如：
+
+  {method = 'get', pattern = '/blog/:id', url = '/blog/detail'}
+  
+  表示当请求为/blog/12类似的url时，实际访问的是/blog/detail?id=12这个url
+  
+* * 匹配
+ 如：
+ 
+   {method = 'get', pattern = '/blog/*', url = '/blog/index'}
+   
+   表示当请求为/blog/123或/blog/add类似的url时，实际访问的是/blog/index这个url
+   
 ##to do
 
 > * 性能优化
