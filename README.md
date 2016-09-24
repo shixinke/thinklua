@@ -2,9 +2,16 @@
 
 ------
 
-thinklua是一个非常简单的web框架，目前只有请求分发、显示模板的功能
+thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单的自定义路由
 
-##框架介绍
+主要功能：
+
+* mysql操作封装
+* redis操作封装
+* 自动请求分发
+* 简单的自定义路由
+
+##快速入门
 
 ###目录结构：
 
@@ -21,7 +28,7 @@ thinklua是一个非常简单的web框架，目前只有请求分发、显示模
 * public   ----用户访问目录(静态资源)
 * tmp      ----临时目录
 
-###使用
+###简单使用
 
 只需要在nginx添加如下配置即可：
 
@@ -43,6 +50,37 @@ thinklua是一个非常简单的web框架，目前只有请求分发、显示模
             root $root/public/;
         }
     }
+
+##使用手册
+* [控制器]（#controller）
+ + 控制器定义(#controller_definition)
+ + 基类控制器(#base_controller)
+ + 访问URL(#visit_the_controller)
+* 模型(#model)
+ + 模型定义(#model_definition)
+ + 基类模型(#base_model)
+* 视图(#view)
+ + 视图使用(#view_usage)
+* 配置(#configuration)
+ + 配置定义(#configuration_definition)
+ + 默认配置项说明(#configuration_item)
+* 路由(#route)
+ + 路由规则(#route_rules)
+
+###控制器
+======
+
+###模型
+======
+
+###视图
+======
+
+###配置
+======
+
+###路由
+======
 
 ##to do
 
