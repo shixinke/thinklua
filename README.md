@@ -69,6 +69,13 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 控制器
 ======
+###控制器定义
+###基类控制器
+####属性
+###方法
+###访问URL
+
+当访问URL：http://domain.com/blog/detail时，对应的文件为apps/controllers/blog.php，访问的是blog控制器的detail方法
 
 模型
 ======
