@@ -98,6 +98,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 * params     ：当前url中的参数
 * withLayout : 是否不使用布局模板
 * layout     : 布局模板(默认为layouts/layout.html)
+
 ###方法
 * [assign : 模板赋值](#assign)
 * [display : 调用模板并显示](#display)
@@ -108,11 +109,16 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  
 ####assign
 ======
+
 + 功能：模板赋值
 + 用法：assign(name, value)
-+ 参数说明：name为模板变量的名称(可以是一个包含键值对的table)
-            value为模板变量的值
-+ 例如：
++ 参数说明：
+
+ name为模板变量的名称(可以是一个包含键值对的table)
+
+ value为模板变量的值
+
+例如：
 
     function _M.read(self)
         self:assign("name", "shixinke")
@@ -123,11 +129,14 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 ####display
 ======
-+ 功能：显示模板
-+ 用法：display(tpl, data)
-+ 参数说明：tpl为模板文件(默认为nil,系统自动定位到当前控制器及当前方法，如/blog/read即为 views/blog/read.html)
-            data为模板变量(默认为nil)
-+ 例如：
+
+* 功能：显示模板
+* 用法：display(tpl, data)
+* 参数说明：
+ + tpl为模板文件(默认为nil,系统自动定位到当前控制器及当前方法，如/blog/read即为 views/blog/read.html)
+ + data为模板变量(默认为nil)
+
+例如：
 
     function _M.read(self)
         self:assign("name", "shixinke")
@@ -145,6 +154,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 #### get
 ======
+
 + 功能：获取get请求参数及url路由中的参数
 + 用法：get(name)
 + 参数说明：name为get请求或路由参数中的键名(name为空时表示所有get请求参数及路由参数)
@@ -156,6 +166,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 #### post
 ======
+
 + 功能：获取post请求参数
 + 用法：post(name)
 + 参数说明：name为post请求参数中的键名(name为空时表示所有post请求参数)
@@ -167,6 +178,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 #### json
 ======
+
 + 功能：返回json格式数据
 + 用法：json(code, message, data)
 + 参数说明：code 为返回数据状态编码(非HTTP状态码)(可以是一个table，表示整个返回数据)
@@ -180,6 +192,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 #### jsonp
 ======
+
 + 功能：返回jsonp格式数据
 + 用法：json(code, message, data, callback)
 + 参数说明：code 为返回数据状态编码(非HTTP状态码)(可以是一个table，表示整个返回数据)
@@ -198,6 +211,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 模型
 ===
+
 ###模型定义
 
 如定义一个province模型，在apps/models目录下面建立一个province.lua的文件：
@@ -242,6 +256,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 #### fields
 ======
+
 + 功能：设置查询字段
 + 用法：fields(field)
 + 参数说明：field表示要查询的字段(可以是字符串也可以是table)
@@ -254,6 +269,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 #### table
 ======
+
 + 功能：设置查询的表名
 + 用法：table(table_name)
 + 参数说明：table_name表示要查询的表名
@@ -266,10 +282,12 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
     
 视图
 ======
+
 框架中的视图使用的是lua-resty-template模板引擎，更多内容请参照:[lua-resty-template](https://github.com/bungle/lua-resty-template)
 
 配置
 ======
+
 配置文件在apps/config/config.lua文件中
 
 ###默认配置
