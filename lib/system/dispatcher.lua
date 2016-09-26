@@ -63,7 +63,7 @@ function _M.dispatch(url_tab)
         end
         local mt = {__index = base_controller}
         setmetatable(m_controller, mt)
-        m_controller:init_view()
+        m_controller:init_view(m_controller)
         if m_controller.init then
             m_controller.init(m_controller)
         end

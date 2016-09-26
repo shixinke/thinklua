@@ -15,7 +15,7 @@ function _M.new(opts)
     if opts.withoutLayout then
         opts.layout = nil
     else
-        opts.layout = layout
+        opts.layout = opts.layout or layout
     end
     return setmetatable({
         template = template,
