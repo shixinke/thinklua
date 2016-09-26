@@ -158,7 +158,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 功能：获取get请求参数及url路由中的参数
 + 用法：get(name)
 + 参数说明：name为get请求或路由参数中的键名(name为空时表示所有get请求参数及路由参数)
-+ 例如：
+
+例如：
 
     function _M.read(self)
         local id = self:get('id')
@@ -170,7 +171,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 功能：获取post请求参数
 + 用法：post(name)
 + 参数说明：name为post请求参数中的键名(name为空时表示所有post请求参数)
-+ 例如：
+
+例如：
 
     function _M.read(self)
         local id = self:post('id')
@@ -179,12 +181,13 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 #### json
 ======
 
-+ 功能：返回json格式数据
-+ 用法：json(code, message, data)
-+ 参数说明：code 为返回数据状态编码(非HTTP状态码)(可以是一个table，表示整个返回数据)
-+           message 为提示信息
-+           data 为返回数据
-+ 例如：
+* 功能：返回json格式数据
+* 用法：json(code, message, data)
+* 参数说明：code 为返回数据状态编码(非HTTP状态码)(可以是一个table，表示整个返回数据)
+ +  message 为提示信息
+ +  data 为返回数据
+
+ 例如：
 
     function _M.read(self)
         self:json(200, 'failed', {id = 100})
@@ -193,13 +196,15 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 #### jsonp
 ======
 
-+ 功能：返回jsonp格式数据
-+ 用法：json(code, message, data, callback)
-+ 参数说明：code 为返回数据状态编码(非HTTP状态码)(可以是一个table，表示整个返回数据)
-+           message 为提示信息
-+           data 为返回数据
-+           callback 为回调函数
-+ 例如：
+* 功能：返回jsonp格式数据
+* 用法：json(code, message, data, callback)
+* 参数说明：
+ + code 为返回数据状态编码(非HTTP状态码)(可以是一个table，表示整个返回数据)
+ + message 为提示信息
+ + data 为返回数据
+ + callback 为回调函数
+
+例如：
 
     function _M.read(self)
         self:jsonp(200, 'failed', {id = 100}, 'callback')
@@ -260,7 +265,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 功能：设置查询字段
 + 用法：fields(field)
 + 参数说明：field表示要查询的字段(可以是字符串也可以是table)
-+ 例如：
+
+例如：
     
 	function _M.lists(self)
         self:fields('id,name'):findAll('table_name')
@@ -273,7 +279,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 功能：设置查询的表名
 + 用法：table(table_name)
 + 参数说明：table_name表示要查询的表名
-+ 例如：
+
+ 例如：
 
     function _M.lists(self)
         self:fields('id,name'):table('table_name'):findAll()
