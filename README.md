@@ -96,6 +96,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 * controller : 当前控制器的名称
 * action     ：当前访问URL对应的方法名称
 * params     ：当前url中的参数
+* withLayout : 是否不使用布局模板
+* layout     : 布局模板(默认为layouts/layout.html)
 ###方法
 * [assign : 模板赋值](#assign)
 * [display : 调用模板并显示](#display)
@@ -218,6 +220,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 * config : 数据库连接配置
 * table     ：数据库表名
 * db     ：mysql连接对象
+
 ###方法
 * [fields : 设置查询字段](#fields)
 * [table : 设置查询表名](#table)
@@ -243,8 +246,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 用法：fields(field)
 + 参数说明：field表示要查询的字段(可以是字符串也可以是table)
 + 例如：
-
-    function _M.lists(self)
+    
+	function _M.lists(self)
         self:fields('id,name'):findAll('table_name')
         -- self:fields(array('id', 'name')):findAll('table_name')
     end
