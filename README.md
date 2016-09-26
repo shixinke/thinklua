@@ -286,7 +286,169 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
         self:fields('id,name'):table('table_name'):findAll()
     end
     
-    
+### where
+======
+
+* 功能：设置查询条件
+* 用法：where(field, condition, value)
+* 参数说明:
+ + field：查询的字段或者整个查询条件(可以是一个table)
+ + condition(查询条件)
+ + value(匹配的值)
+ 
+例如：
+
+    self:where(array('id'=>2))
+    self:where(array('id'=>array('>=', 2)))
+    self:where('name', 'LIKE', 'shixinke')
+    self:where('id="2"')
+
+### group
+======
+
+* 功能：设置查询分组
+* 用法：group(field) 
+* 参数说明：
+ + field 用于分组的字段(可以是一个table或者字符串)   
+
+例如：
+	self:group('name')
+    self:group({'class_name', 'name'})
+
+### order
+======
+
+* 功能：设置查询分组
+* 用法：group(field) 
+* 参数说明：
+ + field 用于分组的字段(可以是一个table或者字符串)   
+
+例如：
+	self:group('name')
+    self:group({'class_name', 'name'})
+
+### limit
+======
+
+* 功能：设置查询分组
+* 用法：group(field) 
+* 参数说明：
+ + field 用于分组的字段(可以是一个table或者字符串)   
+
+例如：
+	self:group('name')
+    self:group({'class_name', 'name'})
+
+### query
+======
+
+* 功能：执行查询语句
+* 用法：query(sql) 
+* 参数说明：
+ + sql 执行的sql语句   
+
+例如：
+	self:query('select * from user where id >=2')
+
+### exec
+======
+
+* 功能：执行非查询语句
+* 用法：exec(sql) 
+* 参数说明：
+ + sql 执行的sql语句   
+
+例如：
+	self:exec('UPDATE user SET name="shixinke" WHERE id=2')
+
+### find
+======
+
+* 功能：查询所有数据
+* 用法：findAll(table, field, where) 
+* 参数说明：
+ + table : 表名
+ + field 要查询的字段  
+ + where : 查询条件 
+
+例如：
+	self:find('user', {'id', 'name'}, {id=2})
+
+### findAll
+======
+
+* 功能：查询所有数据
+* 用法：findAll(table, field, where) 
+* 参数说明：
+ + table : 表名
+ + field 要查询的字段  
+ + where : 查询条件
+
+例如：
+	self:findAll('user', {'id', 'name'}, {class_name='G1'})
+
+### count
+======
+
+* 功能：查询表数据条目数
+* 用法：count(table, where) 
+* 参数说明：
+ + table 操作的表名
+ + where 查询条件   
+
+例如：
+	self:count('user', {class_name="G1"})
+	self:where({class_name="G1"}):count()
+
+### insert
+======
+
+* 功能：插入数据
+* 用法：insert(table, data) 
+* 参数说明：
+ + table 操作的表名
+ + data 要插入的数据
+
+例如：
+    self:inset('user', {name="shixinke", class_name="G1"})
+
+### update
+======
+
+* 功能：修改数据
+* 用法：update(table, data, where) 
+* 参数说明：
+ + table 操作的表名
+ + data 要更新的数据
+ + where 修改条件 
+
+例如：
+	self:where({id=2}):update('user', {name="shixinke"})
+    self:update('user', {name="shixinke"}, {id=2})
+
+### delete
+======
+
+* 功能：删除数据
+* 用法：delete(table, where) 
+* 参数说明：
+ + table 操作的表名
+ + where 删除条件(是一个table或者字符串，与where函数的参数类似)   
+
+例如：
+	
+	self:where({id=2}):delete('user')
+    self:delete('user', {id=2})
+
+### close
+======
+
+* 功能：关闭数据库连接
+* 用法：close() 
+
+例如：
+	self:close()
+
 视图
 ======
 
