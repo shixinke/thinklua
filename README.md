@@ -23,7 +23,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + views    ----模板目录
  + bootstrap.lua  ----应用启动文件
  + init.lua       ----应用初始化文件
-* conf nginx ----配置目录
+* conf  ----nginx配置目录
 * lib      ----lua库目录
 * public   ----用户访问目录(静态资源)
 * tmp      ----临时目录
