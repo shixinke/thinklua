@@ -184,10 +184,10 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 * 功能：返回json格式数据
 * 用法：json(code, message, data)
 * 参数说明：code 为返回数据状态编码(非HTTP状态码)(可以是一个table，表示整个返回数据)
- +  message 为提示信息
- +  data 为返回数据
+ + message 为提示信息
+ + data 为返回数据
 
- 例如：
+例如：
 
     function _M.read(self)
         self:json(200, 'failed', {id = 100})
@@ -212,7 +212,9 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 ###访问URL
 
-当访问URL：http://domain.com/blog/detail时，对应的文件为apps/controllers/blog.lua，访问的是blog控制器的detail方法
+当访问URL为http://domain.com/blog/detail 时，
+
+对应的文件为apps/controllers/blog.lua，访问的是blog控制器的detail方法
 
 模型
 ===
@@ -280,7 +282,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 + 用法：table(table_name)
 + 参数说明：table_name表示要查询的表名
 
- 例如：
+例如：
 
     function _M.lists(self)
         self:fields('id,name'):table('table_name'):findAll()
@@ -312,7 +314,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + field 用于分组的字段(可以是一个table或者字符串)   
 
 例如：
-	self:group('name')
+
+    self:group('name')
     self:group({'class_name', 'name'})
 
 ### order
@@ -324,7 +327,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + field 用于分组的字段(可以是一个table或者字符串)   
 
 例如：
-	self:group('name')
+
+    self:group('name')
     self:group({'class_name', 'name'})
 
 ### limit
@@ -336,7 +340,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + field 用于分组的字段(可以是一个table或者字符串)   
 
 例如：
-	self:group('name')
+
+    self:group('name')
     self:group({'class_name', 'name'})
 
 ### query
@@ -348,7 +353,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + sql 执行的sql语句   
 
 例如：
-	self:query('select * from user where id >=2')
+
+    self:query('select * from user where id >=2')
 
 ### exec
 ======
@@ -359,7 +365,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + sql 执行的sql语句   
 
 例如：
-	self:exec('UPDATE user SET name="shixinke" WHERE id=2')
+
+    self:exec('UPDATE user SET name="shixinke" WHERE id=2')
 
 ### find
 ======
@@ -372,7 +379,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + where : 查询条件 
 
 例如：
-	self:find('user', {'id', 'name'}, {id=2})
+
+    self:find('user', {'id', 'name'}, {id=2})
 
 ### findAll
 ======
@@ -385,7 +393,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + where : 查询条件
 
 例如：
-	self:findAll('user', {'id', 'name'}, {class_name='G1'})
+
+    self:findAll('user', {'id', 'name'}, {class_name='G1'})
 
 ### count
 ======
@@ -397,8 +406,9 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + where 查询条件   
 
 例如：
-	self:count('user', {class_name="G1"})
-	self:where({class_name="G1"}):count()
+
+    self:count('user', {class_name="G1"})
+    self:where({class_name="G1"}):count()
 
 ### insert
 ======
@@ -410,6 +420,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + data 要插入的数据
 
 例如：
+
     self:inset('user', {name="shixinke", class_name="G1"})
 
 ### update
@@ -423,7 +434,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
  + where 修改条件 
 
 例如：
-	self:where({id=2}):update('user', {name="shixinke"})
+
+    self:where({id=2}):update('user', {name="shixinke"})
     self:update('user', {name="shixinke"}, {id=2})
 
 ### delete
@@ -437,7 +449,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 例如：
 	
-	self:where({id=2}):delete('user')
+    self:where({id=2}):delete('user')
     self:delete('user', {id=2})
 
 ### close
@@ -447,7 +459,8 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 * 用法：close() 
 
 例如：
-	self:close()
+
+    self:close()
 
 视图
 ======
