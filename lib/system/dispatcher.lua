@@ -12,7 +12,11 @@ local base_controller = require 'system.controller'
 function _M.parse(self)
     local url_tab = router:route()
     if url_tab == nil then
-        url_tab = {path = ngx_var.uri, params = {}}
+        local uri = ngx_var.uri
+        if config.routes.url_suffix and config.routes.url_suffix ~= '' then
+            uri = regex.sub(uri, config.routes.url_suffix, '')
+        end
+        url_tab = {path = uri, params = {}}
     end
     return self.dispatch(url_tab)
 end

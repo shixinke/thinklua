@@ -36,10 +36,12 @@ function _M.new()
 end
 
 function _M.route(self)
-    local result = {}
     if self.status == 'on' then
         local rules = self.rules[lower(ngx_req.get_method())]
         local uri = ngx.var.uri
+        if config.routes.url_suffix and config.routes.url_suffix ~= '' then
+            uri = regex.sub(uri, config.routes.url_suffix, '')
+        end
         if rules then
             for _, v in pairs(rules) do
                 if uri == v.pattern then
