@@ -21,6 +21,7 @@ local config = {
     routes = {
         default_controller = 'index',
         router_status = 'on',
+        url_suffix = '.html',
         rules = {
             {method = 'get', pattern = '/blog/:id', url = '/blog/detail'},
             --{method = 'get', pattern = '/lists/index', url = '/index/lists?id=11'}
