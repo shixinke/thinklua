@@ -542,14 +542,14 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
    表示当请求是/lists/index这个url时，其实它访问的是/index/lists?id=11这个url
    
-* ：传递参数
+* ":"传递参数
 如：
 
   {method = 'get', pattern = '/blog/:id', url = '/blog/detail'}
   
   表示当请求为/blog/12类似的url时，实际访问的是/blog/detail?id=12这个url
   
-* * 匹配
+*  “*” 匹配
  如：
  
    {method = 'get', pattern = '/blog/*', url = '/blog/index'}
