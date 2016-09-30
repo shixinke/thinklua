@@ -47,14 +47,39 @@ function _M.merge(tab1, tab2)
 end
 
 function _M.in_array(ele, tab)
-    local matched
-    for i, v in tab do
+    if ele == nil or type(ele) == 'table' or type(tab) ~= 'table' then
+        return nil
+    end
+    local matched,i,v
+    for i, v in pairs(tab) do
         if v == ele then
             matched = i
             break
         end
     end
     return matched
+end
+
+function _M.clear_table(tab)
+    local obj = {}
+    for k, v in pairs(tab) do
+        if v then
+            obj[k] = v
+        end
+    end
+    return obj
+end
+
+function _M.table_length(tab, except)
+    local len = 0
+    for k, v in pairs(tab) do
+        if v and except then
+            len = len+1
+        else
+            len = len+1
+        end
+    end
+    return len
 end
 
 function _M.explode(delimiter, str)
@@ -143,6 +168,13 @@ function _M.show_error(code, err)
         ngx.log(ngx.ERR, err)
         ngx.redirect(config.pages.server_error)
     end
+end
+
+
+
+function _M.password(password)
+    local salt = config.security.password_salt or 'shixinke'
+    return ngx.md5(password..salt)
 end
 
 return _M

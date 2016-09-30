@@ -25,8 +25,13 @@ function _M.dispatch(url_tab)
     local default_controller = config.routes.default_controller or 'index'
     local default_action = config.routes.default_action or 'index'
     local uri = url_tab.path
-    local controller,action
+    local layer,controller,action
     local args = url_tab.params or {}
+    local layers
+
+    if config.routes.layer_status == 'on' and config.routes.layers then
+        layers = func.explode(',', config.routes.layers)
+    end
     if uri == '/' then
         controller = default_controller
         action = default_action
@@ -45,32 +50,57 @@ function _M.dispatch(url_tab)
         end
         local count = #mat
         if count <= 2 then
-            controller = mat[1] or default_controller
-            action = mat[2] or default_action
+            if layers and func.in_array(mat[1], layers) then
+                layer = mat[1]
+                controller = mat[2] or default_controller
+                action = default_action
+            else
+                controller = mat[1] or default_controller
+                action = mat[2] or default_action
+            end
         else
-            controller = mat[1]
-            action = mat[2]
-            for i = 3, count, 2 do
-                if mat[i+1] then
-                    args[mat[i]] = mat[i+1]
+            if layers and func.in_array(mat[1], layers) then
+                layer = mat[1]
+                controller = mat[2]
+                action = mat[3]
+                for i = 4, count, 2 do
+                    if mat[i+1] then
+                        args[mat[i]] = mat[i+1]
+                    end
+                end
+            else
+                controller = mat[1]
+                action = mat[2]
+                for i = 3, count, 2 do
+                    if mat[i+1] then
+                        args[mat[i]] = mat[i+1]
+                    end
                 end
             end
         end
     end
 
-    local ok, m_controller = pcall(require, 'controllers.'..controller)
+    local ok, m_controller
+    if layer then
+        ok, m_controller = pcall(require, 'controllers.'..layer..'.'..controller)
+    else
+        ok, m_controller = pcall(require, 'controllers.'..controller)
+    end
+
     if not ok or type(m_controller) ~= 'table' then
-        func.show_404('the controller file is not exists or it is not a controller module')
+        local dir = layer and layer..'/'..controller or controller
+        func.show_404('the controller file apps/controllers/'..dir..'.lua'..' does not exists or it is not a controller module')
     else
         if not m_controller[action] or type(m_controller[action]) ~= 'function' then
             func.show_404('the action '..action..' is not exists')
         end
         local mt = {__index = base_controller}
         setmetatable(m_controller, mt)
-        m_controller:init_view(m_controller)
         if m_controller.init then
             m_controller.init(m_controller)
         end
+        m_controller:init_view(m_controller)
+        m_controller.layer = layer
         m_controller.controller = controller
         m_controller.action = action
         m_controller.params = args

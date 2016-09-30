@@ -23,7 +23,6 @@ end
 
 function _M.query(self, sql)
     local sql, err = sql or self:build_query_sql()
-    ngx.say(sql)
     if sql == nil then
         return nil, err
     end
@@ -36,12 +35,13 @@ function _M.exec(self, sql)
     if not db then
         return nil, err
     end
+
     local ok, err, errcode, sqlstate = self:connect(db)
     if not ok then
         return nil, err, errcode, sqlstate
     end
     self.db = db
-    local res, err, errcode, sqlstate = db:query('SET NAMES `'..self.charset..'`')
+    local res, err, errcode, sqlstate = db:query('SET NAMES `'..self.config.charset..'`')
     if not res then
         return err, errcode, sqlstate
     end
@@ -73,9 +73,9 @@ function _M.fields(self, fields)
     return self
 end
 
-function _M.table(self, table_name)
-    if table_name then
-        self.table = table_name
+function _M.table(self, tab)
+    if tab then
+        self.table_name = tab
     end
     return self
 end
@@ -124,13 +124,13 @@ function _M.where(self, field, condition, value)
     return self
 end
 
-function _M.build_query_sql(self, table)
-    local table = table or self.table
-    if table == nil then
+function _M.build_query_sql(self, tab)
+    local tab = tab or self.table_name
+    if tab == nil then
         return nil, 'the table name is nil'
     end
     local sql = 'SELECT '
-    if func.is_empty_table(self._condition.fields) ~= false then
+    if func.is_empty_table(self._condition.fields) ~= true then
         for k,_ in pairs(self._condition.fields) do
             sql = sql..'`'..k..'`'
             if next(self._condition.fields) then
@@ -140,8 +140,8 @@ function _M.build_query_sql(self, table)
     else
         sql = sql..'* '
     end
-    sql = sql..' FROM '..table..' '..self:parse_where()
-    if func.is_empty_table(self._condition.group) then
+    sql = sql..' FROM '..tab..' '..self:parse_where()
+    if func.is_empty_table(self._condition.group) ~= true then
         sql = sql..' GROUP BY '
         for k,_ in pairs(self._condition.group) do
             sql = sql..'`'..k..'`'
@@ -150,7 +150,7 @@ function _M.build_query_sql(self, table)
             end
         end
     end
-    if func.is_empty_table(self._condition.order) then
+    if func.is_empty_table(self._condition.order) ~= true then
         sql = sql..' ORDER BY '
         for k,v in pairs(self._condition.order) do
             sql = sql..'`'..k..'` '..v
@@ -245,11 +245,11 @@ function _M.limit(self, offset, limit)
     return self
 end
 
-function _M.count(self, table, where)
+function _M.count(self, tab, where)
     self:where(where)
-    self:table(table)
-    local sql = 'SELECT COUNT(*) AS total FROM '..self.table..' '..self:parse_where()..' LIMIT 1'
-    local res, err, errcode, sqlstate = self:query()
+    self:table(tab)
+    local sql = 'SELECT COUNT(*) AS total FROM '..self.table_name..' '..self:parse_where()..' LIMIT 1'
+    local res, err, errcode, sqlstate = self:query(sql)
     if res then
         return res[1]['total']
     else
@@ -257,8 +257,8 @@ function _M.count(self, table, where)
     end
 end
 
-function _M.find(self, table, field, where)
-    self:table(table)
+function _M.find(self, tab, field, where)
+    self:table(tab)
     self:fields(field)
     self:limit(1)
     self:where(where)
@@ -270,31 +270,34 @@ function _M.find(self, table, field, where)
     end
 end
 
-function _M.findAll(self, table, field, where)
-    self:table(table)
+function _M.findAll(self, tab, field, where)
+    self:table(tab)
     self:fields(field)
-    self:limit(1)
     self:where(where)
     return self:query()
 end
 
-function _M.insert(self, table, data)
-    self:table(table)
-    if data == nil or self.table == nil then
+function _M.insert(self, tab, data)
+    self:table(tab)
+    if data == nil or self.table_name == nil then
         return false, 'the data is nil or table name is nil'
     end
-    local sql = 'INSERT INTO '..self.table..'('
+    local data = func.clear_table(data)
+    local sql = 'INSERT INTO '..self.table_name..'('
     local fields = ''
     local values = ''
+    local len = func.table_length(data)
+    local n = 0
     for k, v in pairs(data) do
         fields = fields..'`'..k..'`'
         values = values..'"'..v..'"'
-        if next(data) then
+        n = n+1
+        if n< len then
             fields = fields..','
             values = values..','
         end
     end
-    sql = fields..')VALUES ('..sql..')'
+    sql = sql..fields..')VALUES ('..values..')'
     local res, err, errcode, sqlstate = self:exec(sql)
     if res then
         return res.insert_id and res.insert_id or res.affected_rows
@@ -303,13 +306,14 @@ function _M.insert(self, table, data)
     end
 end
 
-function _M.update(self, table, data, where)
-    self:table(table)
+function _M.update(self, tab, data, where)
+    self:table(tab)
     self:where(where)
-    if data == nil or self.table == nil then
+    if data == nil or self.table_name == nil then
         return false, 'the data is nil or table name is nil'
     end
-    local sql = 'UPDATE '..self.table..' SET '
+    local data = func.clear_table(data)
+    local sql = 'UPDATE '..self.table_name..' SET '
     for k, v in pairs(data) do
         sql = sql..'`'..k..'`='..'"'..v..'"'
         if next(data) then
@@ -329,10 +333,10 @@ function _M.update(self, table, data, where)
     end
 end
 
-function _M.delete(self, table, where)
-    self:table(table)
+function _M.delete(self, tab, where)
+    self:table(tab)
     self:where(where)
-    local sql = 'DELETE FROM '..table
+    local sql = 'DELETE FROM '..self.table_name
     local where = self:parse_where()
     if where == '' then
         return nil, 'the condition cannot be nil in delete operation'
@@ -350,23 +354,24 @@ function _M.get_last_sql(self)
     return self.sql
 end
 
-function _M.new(opts)
+function _M.new(self, opts)
     local opts = (opts and type(opts) == 'table') and opts or {}
     opts.host = opts.host or config.database.host
     opts.port = opts.port or config.database.port
     opts.user = opts.user or config.database.user
     opts.password = opts.password or config.database.password
     opts.database = opts.database or config.database.database
-    opts.charset = opts.charset or config.database.charset
+    opts.charset = (opts.charset or config.database.charset) or 'utf8'
     opts.timeout = opts.timeout or config.database.timeout
     opts.max_idle_timeout = opts.max_idle_timeout or config.database.max_idle_timeout
     opts.pool_size = opts.pool_size or config.database.pool_size
-    return setmetatable({
-        config = opts,
-        table = opts.table or nil,
-        db = nil,
-        _condition = {fields = {}, where = {}, group = {}, order = {}, limit = nil},
-        sql = sql }, mt)
+    self.config = opts
+    self.table_name = self.table_name or opts.table_name
+    self.db = nil
+    self.pk = nil
+    self._condition = {fields = {}, where = {}, group = {}, order = {}, limit = nil }
+    self.sql = nil
+    return setmetatable(self, mt)
 end
 
 function _M.close(self)
