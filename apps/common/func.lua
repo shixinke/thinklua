@@ -5,6 +5,8 @@ local _M = {
 local debug = config.debug
 local base_model = require 'system.model'
 local regex = ngx.re
+local strlen = string.len
+local substr = string.sub
 
 function _M.trim(str)
     local m, err = regex.match(str, "[^s]+.+[^s]+", 'ijso')
@@ -86,6 +88,12 @@ function _M.explode(delimiter, str)
     local tab = {}
     if type(str) ~= 'string' or delimiter == nil then
         return tab
+    end
+
+    local delen = -strlen(delimiter)
+    local subs = substr(str, delen)
+    if subs ~= delimiter then
+        str = str..delimiter
     end
     local iterator, err = regex.gmatch(str, '([^'..delimiter..']+)'..delimiter, 'ijso')
     if not iterator then

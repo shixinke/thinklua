@@ -131,9 +131,12 @@ function _M.build_query_sql(self, tab)
     end
     local sql = 'SELECT '
     if func.is_empty_table(self._condition.fields) ~= true then
+        local field_len = func.table_length(self._condition.fields)
+        local field_index = 0
         for k,_ in pairs(self._condition.fields) do
+            field_index = field_index + 1
             sql = sql..'`'..k..'`'
-            if next(self._condition.fields) then
+            if field_index < field_len then
                 sql = sql..','
             end
         end
@@ -152,9 +155,12 @@ function _M.build_query_sql(self, tab)
     end
     if func.is_empty_table(self._condition.order) ~= true then
         sql = sql..' ORDER BY '
+        local order_len = func.table_length(self._condition.order)
+        local index = 0;
         for k,v in pairs(self._condition.order) do
+            index = index + 1
             sql = sql..'`'..k..'` '..v
-            if next(self._condition.order) then
+            if index < order_len then
                 sql = sql..','
             end
         end
@@ -229,9 +235,9 @@ function _M.order(self, field, direction)
         return self
     end
     if type(field) == 'table' then
-        self._condition.order[field[1]] = field[2] or 'ASC'
+        self._condition.order[field[1]] = field[2] and upper(field[2]) or 'ASC'
     else
-        self._condition.order[field] = direction or 'ASC'
+        self._condition.order[field] = direction and upper(direction) or 'ASC'
     end
     return self
 end
