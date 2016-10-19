@@ -96,7 +96,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 * controller : 当前控制器的名称
 * action     ：当前访问URL对应的方法名称
 * params     ：当前url中的参数
-* withLayout : 是否不使用布局模板
+* withoutLayout : 是否不使用布局模板
 * layout     : 布局模板(默认为layouts/layout.html)
 
 ###方法
