@@ -50,6 +50,7 @@ function _M.exec(self, sql)
     if not res then
         return nil, err, errcode, sqlstate
     end
+    self._condition = {fields = {}, where = {}, group = {}, order = {}, limit = nil }
     self:set_keepalive(db)
     return res
 end
