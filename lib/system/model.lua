@@ -146,9 +146,11 @@ function _M.build_query_sql(self, tab)
     sql = sql..' FROM '..tab..' '..self:parse_where()
     if func.is_empty_table(self._condition.group) ~= true then
         sql = sql..' GROUP BY '
+        local group_len = func.table_length(self._condition.group)
+        local group_index = 0
         for k,_ in pairs(self._condition.group) do
             sql = sql..'`'..k..'`'
-            if next(self._condition.group) then
+            if group_index < group_len then
                 sql = sql..','
             end
         end
