@@ -322,11 +322,21 @@ function _M.update(self, tab, data, where)
         return false, 'the data is nil or table name is nil'
     end
     local data = func.clear_table(data)
+    local data_len = func.table_length(data)
     local sql = 'UPDATE '..self.table_name..' SET '
+    local data_index = 0
     for k, v in pairs(data) do
+        data_index = data_index + 1
         sql = sql..'`'..k..'`='..'"'..v..'"'
-        if next(data) then
+        if data_index < data_len then
             sql = sql..','
+        end
+    end
+    if func.is_empty_table(self._condition.where) then
+        if self.pk and data[self.pk] then
+            local cond = {}
+            cond[self.pk] = data[self.pk]
+            self:where(cond)
         end
     end
     local where = self:parse_where()
@@ -376,8 +386,8 @@ function _M.new(self, opts)
     opts.pool_size = opts.pool_size or config.database.pool_size
     self.config = opts
     self.table_name = self.table_name or opts.table_name
-    self.db = nil
-    self.pk = nil
+    self.db = self.db or nil
+    --self.pk = self.pk or nil
     self._condition = {fields = {}, where = {}, group = {}, order = {}, limit = nil }
     self.sql = nil
     return setmetatable(self, mt)
