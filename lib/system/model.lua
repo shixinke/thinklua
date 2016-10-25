@@ -50,7 +50,9 @@ function _M.exec(self, sql)
     if not res then
         return nil, err, errcode, sqlstate
     end
-    self._condition = {fields = {}, where = {}, group = {}, order = {}, limit = nil }
+    if self.remains ~= true then
+        self._condition = {fields = {}, where = {}, group = {}, order = {}, limit = nil }
+    end
     self:set_keepalive(db)
     return res
 end
@@ -180,13 +182,13 @@ function _M.parse_where(self)
     for k, v in pairs(self._condition.where) do
         v[1] = upper(v[1])
         if v[1] == '!ISNULL' then
-            where[#where+1] = '!ISNULL('..k..')'
+            where[#where+1] = '!ISNULL(`'..k..'`)'
         elseif v[1] == 'ISNULL' or v[2] == nil then
-            where[#where+1] = 'ISNULL('..k..')';
+            where[#where+1] = 'ISNULL(`'..k..'`)';
         elseif v[1] == 'STRING' then
             where[#where+1] = v[2]
         elseif v[1] == 'LIKE' then
-            where[#where+1] = v[1]..' LIKE "%'..v[2]..'%"'
+            where[#where+1] = '`'..v[1]..'` LIKE "%'..v[2]..'%"'
         elseif v[1] == 'IN' or v[1] == 'NOT IN' then
             if type(v[2]) ~= 'table' then
                 v[2] = func.explode(',', v[2])
@@ -199,17 +201,17 @@ function _M.parse_where(self)
                     ranges = ranges..','
                 end
             end
-            where[#where+1] = k..' '..v[1]..' ('..ranges..')'
+            where[#where+1] = '`'..k..'` '..v[1]..' ('..ranges..')'
         elseif v[1] == 'BETWEEN' then
             if type(v[2]) ~= 'table' then
                 v[2] = func.explode(',', v[2])
             end
             if v[2][2] then
-                where[#where+1] = k..' BETWEEN "'..v[2][1]..'" AND "'..v[2][2]..'"'
+                where[#where+1] = '`'..k..'` BETWEEN "'..v[2][1]..'" AND "'..v[2][2]..'"'
             end
         else
             if type(v[2]) ~= 'table' then
-                where[#where+1] = k..'  '..v[1]..' "'..v[2]..'"'
+                where[#where+1] = '`'..k..'`  '..v[1]..' "'..v[2]..'"'
             end
         end
     end
@@ -389,6 +391,7 @@ function _M.new(self, opts)
     self.db = self.db or nil
     --self.pk = self.pk or nil
     self._condition = {fields = {}, where = {}, group = {}, order = {}, limit = nil }
+    self.remains = false
     self.sql = nil
     return setmetatable(self, mt)
 end
