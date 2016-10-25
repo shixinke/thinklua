@@ -227,20 +227,25 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
     local _M = {
         _VERSION = '0.01',
-        table = 'province'
+        table = 'province',
+        pk = 'id'
     }
     func.extends_model(_M)
     return _M
    
 说明:属性table表示模型对应的表名
 
+    pk表示主键(没有主键的可以不填，组合主键也不用填)
+
    func.extends_model(_M)表示当前模型继承自基类模型
     
 ###基类模型
 ####属性
 * config : 数据库连接配置
-* table     ：数据库表名
+* table_name     ：数据库表名
 * db     ：mysql连接对象
+* remains : 是否保留上次查询的条件(用于两次相同条件的查询，每次查询默认都会清空查询条件)
+* sql : 完整的查询语句
 
 ###方法
 * [fields : 设置查询字段](#fields)
@@ -321,28 +326,31 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 ### order
 ======
 
-* 功能：设置查询分组
-* 用法：group(field) 
+* 功能：查询排序
+* 用法：order(field, direction)
 * 参数说明：
- + field 用于分组的字段(可以是一个table或者字符串)   
+ + field 用于排序的字段(可以是一个table或者字符串)
+ + direction：排序类型，是正序还是倒序(默认正序)
 
 例如：
 
-    self:group('name')
-    self:group({'class_name', 'name'})
+    self:order('name')
+    self:order('name', 'asc')
+    self:order({'name', 'asc'})
 
 ### limit
 ======
 
-* 功能：设置查询分组
-* 用法：group(field) 
+* 功能：查询分页
+* 用法：limit(offset, limit)
 * 参数说明：
- + field 用于分组的字段(可以是一个table或者字符串)   
+ + offset:查询分页起始条目
+ + limit : 查询多少条数据
 
 例如：
 
-    self:group('name')
-    self:group({'class_name', 'name'})
+    self:limit(15)
+    self:limit(0, 15)
 
 ### query
 ======
@@ -372,7 +380,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 ======
 
 * 功能：查询所有数据
-* 用法：findAll(table, field, where) 
+* 用法：find(table, field, where)
 * 参数说明：
  + table : 表名
  + field 要查询的字段  
