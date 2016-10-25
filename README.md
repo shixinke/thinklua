@@ -75,7 +75,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 
 定义如下：
     local _M = {
-    _VERSION = '0.01'
+        _VERSION = '0.01'
     }
     
     function _M.index(self)
@@ -215,6 +215,26 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
 当访问URL为http://domain.com/blog/detail 时，
 
 对应的文件为apps/controllers/blog.lua，访问的是blog控制器的detail方法
+
+#### layer
+
+支持在控制器前面加目录，如http://domain.com/admin/blog/add，访问的是
+
+apps/controllers/admin/blog.lua
+
+但是开启layer是需要配置的：
+
+layers="admin"
+
+将模块放于layers的配置项中，多个使用,隔开
+
+### 伪静态后缀
+
+支持在URL后面添加后缀，如.html
+
+比如访问:http://domain.com/blog/detail.html
+
+需要在项目配置文件config.lua中添加 url_suffix的配置
 
 模型
 ===
@@ -507,6 +527,10 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
         routes = {
             default_controller = 'index',
             router_status = 'on',
+            layer_status = 'on',
+            layers = 'purview,monitor,config',
+            url_suffix = '.html',
+            view_suffix = '.html',
             rules = {
                 {method = 'get', pattern = '/blog/:id', url = '/blog/detail'},
                 {method = 'get', pattern = '/lists/index', url = '/index/lists?id=11'}
