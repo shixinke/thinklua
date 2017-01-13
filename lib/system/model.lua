@@ -5,6 +5,7 @@ local mysql = require "resty.mysql"
 local mt = { __index = _M }
 local upper = string.upper
 local lower = string.lower
+local substr = string.sub
 
 
 function _M.connect(self, db)
@@ -301,7 +302,12 @@ function _M.insert(self, tab, data)
     local n = 0
     for k, v in pairs(data) do
         fields = fields..'`'..k..'`'
-        values = values..'"'..v..'"'
+        if substr(v, 1, 1) == '"' and substr(v, -1, -1) == '"' then
+            v = v
+        else
+            v = '"'..v..'"'
+        end
+        values = values..v
         n = n+1
         if n< len then
             fields = fields..','
@@ -329,7 +335,12 @@ function _M.update(self, tab, data, where)
     local data_index = 0
     for k, v in pairs(data) do
         data_index = data_index + 1
-        sql = sql..'`'..k..'`='..'"'..v..'"'
+        if substr(v, 1, 1) == '"' and substr(v, -1, -1) == '"' then
+            v = v
+        else
+            v = '"'..v..'"'
+        end
+        sql = sql..'`'..k..'`='..v
         if data_index < data_len then
             sql = sql..','
         end
