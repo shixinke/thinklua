@@ -95,7 +95,12 @@ function _M.explode(delimiter, str)
     if subs ~= delimiter then
         str = str..delimiter
     end
-    local iterator, err = regex.gmatch(str, '([^'..delimiter..']+)'..delimiter, 'ijso')
+    local iterator, err
+    if _M.in_array(delimiter, {'|'}) then
+        iterator, err = regex.gmatch(str, '([^'..delimiter..']+)\\'..delimiter, 'ijso')
+    else
+        iterator, err = regex.gmatch(str, '([^'..delimiter..']+)'..delimiter, 'ijso')
+    end
     if not iterator then
         tab = {str}
         return tab, err
