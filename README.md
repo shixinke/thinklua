@@ -2,7 +2,7 @@
 
 ------
 
-thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单的自定义路由
+thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能，支持简单的自定义路由
 
 主要功能：
 
@@ -37,7 +37,7 @@ thinklua是一个非常简单的web框架，有基本的MVC功能，支持简单
     init_by_lua_file  '/the/root/path/thinklua/apps/init.lua';
 
     server {
-        listen 8060;
+        listen 8000;
         set $root  /the/root/path/thinklua;
         set $app_root  $root/apps;
         set $template_root $app_root/views;
@@ -591,7 +591,7 @@ layers="admin"
 ##to do
 
 > * 性能优化
-> * 添加更多session,cookie等类库的支持
+> * 添加更多如cookie等类库的支持
 
 ##contact
 author:shixinke
