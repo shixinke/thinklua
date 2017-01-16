@@ -37,7 +37,10 @@ local config = {
         }
     },
     security = {                                 -- 安全相关的设置
-        password_salt = 'shixinke'               -- 密码加密字符串
+        password_salt = 'shixinke',              -- 密码加密字符串
+        session = {
+            secret = 'kdkdikekdldinfk23456'
+        }
     },
     pages = {                                    -- 页面的相关配置
         charset = 'UTF-8',                       -- 页面编码
