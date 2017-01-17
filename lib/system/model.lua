@@ -189,7 +189,7 @@ function _M.parse_where(self)
         elseif v[1] == 'STRING' then
             where[#where+1] = v[2]
         elseif v[1] == 'LIKE' then
-            where[#where+1] = '`'..v[1]..'` LIKE "%'..v[2]..'%"'
+            where[#where+1] = '`'..k..'` LIKE "%'..v[2]..'%"'
         elseif v[1] == 'IN' or v[1] == 'NOT IN' then
             if type(v[2]) ~= 'table' then
                 v[2] = func.explode(',', v[2])
