@@ -197,7 +197,7 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
 ======
 
 * 功能：返回jsonp格式数据
-* 用法：json(code, message, data, callback)
+* 用法：jsonp(code, message, data, callback)
 * 参数说明：
  + code 为返回数据状态编码(非HTTP状态码)(可以是一个table，表示整个返回数据)
  + message 为提示信息
@@ -449,7 +449,7 @@ layers="admin"
 
 例如：
 
-    self:inset('user', {name="shixinke", class_name="G1"})
+    self:insert('user', {name="shixinke", class_name="G1"})
 
 ### update
 ======
