@@ -6,6 +6,7 @@ local mt = { __index = _M }
 local upper = string.upper
 local lower = string.lower
 local substr = string.sub
+local filter_sql = ndk.set_var.set_quote_sql_str
 
 
 function _M.connect(self, db)
@@ -189,15 +190,18 @@ function _M.parse_where(self)
         elseif v[1] == 'STRING' then
             where[#where+1] = v[2]
         elseif v[1] == 'LIKE' then
-            where[#where+1] = '`'..k..'` LIKE "%'..v[2]..'%"'
+            where[#where+1] = '`'..k..'` LIKE "'..v[2]..'"'
         elseif v[1] == 'IN' or v[1] == 'NOT IN' then
             if type(v[2]) ~= 'table' then
                 v[2] = func.explode(',', v[2])
             end
             local count = #v[2]
             local ranges = ''
-            for i, v in pairs(v[2]) do
-                ranges = '"'..ranges..'"'
+            for i, val in pairs(v[2]) do
+                if type(val) == 'string' then
+                    val = '"'..val..'"'
+                end
+                ranges = ranges..val
                 if i ~= count then
                     ranges = ranges..','
                 end
@@ -208,11 +212,20 @@ function _M.parse_where(self)
                 v[2] = func.explode(',', v[2])
             end
             if v[2][2] then
-                where[#where+1] = '`'..k..'` BETWEEN "'..v[2][1]..'" AND "'..v[2][2]..'"'
+                if type(v[2][1]) == 'string' then
+                    v[2][1] = ' "'..v[2][1]..'"'
+                end
+                if type(v[2][2]) == 'string' then
+                    v[2][2] = ' "'..v[2][2]..'"'
+                end
+                where[#where+1] = '`'..k..'` BETWEEN '..v[2][1]..' AND '..v[2][2]
             end
         else
             if type(v[2]) ~= 'table' then
-                where[#where+1] = '`'..k..'`  '..v[1]..' "'..v[2]..'"'
+                if type(v[2]) == 'string' then
+                    v[2] = ' "'..v[2]..'"'
+                end
+                where[#where+1] = '`'..k..'`  '..v[1]..v[2]
             end
         end
     end
