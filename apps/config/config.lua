@@ -28,6 +28,8 @@ local config = {
         rules = {                                -- 自定义路由规则
             {method = 'get', pattern = '/blog/:id', url = '/blog/detail'},
             {method = 'get', pattern = '/search/:key', url = '/search/index'},
+            {method = 'get', pattern = '/category-([^\\s]+)', url = '/test/index?category=$1'},  -- 支持正则表达式
+            {method = 'get', pattern = '/:category/:id', url = '/test/detail'}                   -- 支持都是模糊匹配的(只支持一个)
             --{method = 'get', pattern = '/lists/index', url = '/index/lists?id=11'}
             --[[
                method表示请求方式，目前只支持get/post

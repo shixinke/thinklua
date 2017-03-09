@@ -87,23 +87,9 @@ function _M.table_length(tab, except)
     return len
 end
 
-function _M.explode(delimiter, str)
+function _M.split(str, pattern)
     local tab = {}
-    if type(str) ~= 'string' or delimiter == nil then
-        return tab
-    end
-
-    local delen = -strlen(delimiter)
-    local subs = substr(str, delen)
-    if subs ~= delimiter then
-        str = str..delimiter
-    end
-    local iterator, err
-    if _M.in_array(delimiter, {'|'}) then
-        iterator, err = regex.gmatch(str, '([^'..delimiter..']+)\\'..delimiter, 'ijso')
-    else
-        iterator, err = regex.gmatch(str, '([^'..delimiter..']+)'..delimiter, 'ijso')
-    end
+    local iterator, err = regex.gmatch(str, pattern, 'ijso')
     if not iterator then
         tab = {str}
         return tab, err
@@ -119,6 +105,27 @@ function _M.explode(delimiter, str)
     end
     return tab
 end
+
+function _M.explode(delimiter, str)
+    local tab = {}
+    if type(str) ~= 'string' or delimiter == nil then
+        return tab
+    end
+
+    local delen = -strlen(delimiter)
+    local subs = substr(str, delen)
+    if subs ~= delimiter then
+        str = str..delimiter
+    end
+    local pattern
+    if _M.in_array(delimiter, {'|'}) then
+        pattern = '([^'..delimiter..']+)\\'..delimiter
+    else
+        pattern = '([^'..delimiter..']+)'..delimiter
+    end
+    return _M.split(str, pattern)
+end
+
 
 function _M.url_parse(url)
     local url_tab = {path = nil, params = {} }
