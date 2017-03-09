@@ -76,10 +76,6 @@ function _M.route(self)
                         end
                     else
                         local rule_tab = func.explode('/', v.pattern..'/')
-                        local len = #path_tab
-                        if len ~= #rule_tab then
-                            break
-                        end
                         local matched = 0
                         local pattern = 0
                         local args = {}

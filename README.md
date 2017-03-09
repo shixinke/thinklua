@@ -585,12 +585,28 @@ layers="admin"
   
   表示当请求为/blog/12类似的url时，实际访问的是/blog/detail?id=12这个url
   
+  {method = 'get', pattern = '/:alias', url = '/blog/detail' }
+  
+  表示当请求为/abc类似的url时，实际访问的是/blog/detail?alias=abc这个url
+  
 *  “*” 匹配
  如：
  
    {method = 'get', pattern = '/blog/*', url = '/blog/index'}
    
    表示当请求为/blog/123或/blog/add类似的url时，实际访问的是/blog/index这个url
+   
+* 全正则匹配
+   
+   {method = 'get', pattern = '/category-([^\\s]+)', url = '/test/index?category=$1'}, 
+   
+   表示以category开关的url，转向到/test/index这个方法，并将正则匹配内容传入到category中
+   
+* 全模糊匹配  
+ 
+   {method = 'get', pattern = '/:category/:id', url = '/test/detail'}   
+                   
+   注：表示以如果path为xx/xx的会请求到/test/detail这个方法(不影响其他通过url直接匹配的规则)
    
 ##to do
 
