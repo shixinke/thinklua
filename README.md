@@ -11,13 +11,13 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
 * 自动请求分发
 * 简单的自定义路由
 
-##状态
+## 状态
 
 目前该框架还在测试阶段
 
-##快速入门
+## 快速入门
 
-###目录结构：
+### 目录结构：
 
 * apps  ----应用目录
  + common  ----函数库
@@ -32,7 +32,7 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
 * public   ----用户访问目录(静态资源)
 * tmp      ----临时目录
 
-###简单使用
+### 简单使用
 
 只需要在nginx添加如下配置即可：
 
@@ -55,7 +55,7 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
         }
     }
 
-##使用手册
+## 使用手册
 * [控制器](#控制器)
  + [控制器定义](#控制器自定义)
  + [基类控制器](#基类控制器)
@@ -73,7 +73,7 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
 
 控制器
 ======
-###控制器定义
+### 控制器定义
 
 如定义一个blog控制器，在apps/controllers目录下面建立一个blog.lua的文件：
 
@@ -95,15 +95,15 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
     
     return _M
     
-###基类控制器
-####属性
+### 基类控制器
+#### 属性
 * controller : 当前控制器的名称
 * action     ：当前访问URL对应的方法名称
 * params     ：当前url中的参数
 * withoutLayout : 是否不使用布局模板
 * layout     : 布局模板(默认为layouts/layout.html)
 
-###方法
+### 方法
 * [assign : 模板赋值](#assign)
 * [display : 调用模板并显示](#display)
 * [get : 获取get请求或url中的参数](#get)
@@ -111,7 +111,7 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
 * [json : 返回json字符串](#json)
 * [jsonp : 返回jsonp字符串](#jsonp)
  
-####assign
+#### assign
 ======
 
 + 功能：模板赋值
@@ -131,7 +131,7 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
     end
 
 
-####display
+#### display
 ======
 
 * 功能：显示模板
@@ -214,7 +214,7 @@ thinklua是一个轻量级的(非常简单的)web框架，有基本的MVC功能�
         self:jsonp(200, 'failed', {id = 100}, 'callback')
     end
 
-###访问URL
+### 访问URL
 
 当访问URL为http://domain.com/blog/detail 时，
 
@@ -263,15 +263,15 @@ layers="admin"
 
    func.extends_model(_M)表示当前模型继承自基类模型
     
-###基类模型
-####属性
+### 基类模型
+#### 属性
 * config : 数据库连接配置
 * table_name     ：数据库表名
 * db     ：mysql连接对象
 * remains : 是否保留上次查询的条件(用于两次相同条件的查询，每次查询默认都会清空查询条件)
 * sql : 完整的查询语句
 
-###方法
+### 方法
 * [fields : 设置查询字段](#fields)
 * [table : 设置查询表名](#table)
 * [where : 设置查询条件](#where)
@@ -504,7 +504,7 @@ layers="admin"
 
 配置文件在apps/config/config.lua文件中
 
-###默认配置
+### 默认配置
 
 如：
 
@@ -562,7 +562,7 @@ layers="admin"
  + not_found:表示404页面url
  + server_error:表示50x页面url
     
-###读取配置
+### 读取配置
 
 因为配置文件中项目初始化时已经加载，不需要在使用时加载配置文件，是一个全局变量，因此可以使用config.database.host类似的形式来读取配置文件
 
@@ -571,7 +571,7 @@ layers="admin"
 
 只需要在配置中打开路由开关即可，默认是根据URL自动匹配
 
-###路由规则
+### 路由规则
 * 转发
 如：
    {method = 'get', pattern = '/lists/index', url = '/index/lists?id=11'}
@@ -608,7 +608,7 @@ layers="admin"
                    
    注：表示以如果path为xx/xx的会请求到/test/detail这个方法(不影响其他通过url直接匹配的规则)
    
-##to do
+## to do
 
 > * 性能优化
 > * 添加更多如cookie等类库的支持
