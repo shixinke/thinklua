@@ -243,7 +243,7 @@ layers="admin"
 模型
 ===
 
-###模型定义
+### 模型定义
 
 如定义一个province模型，在apps/models目录下面建立一个province.lua的文件：
 
