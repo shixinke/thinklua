@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbdf420f-0113-478d-b231-a06158baff75" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/system/router.lua" afterPath="$PROJECT_DIR$/lib/system/router.lua" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/apps/bootstrap.lua" afterPath="$PROJECT_DIR$/init/bootstrap.lua" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/apps/common/func.lua" afterPath="$PROJECT_DIR$/lib/system/func.lua" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/apps/config/config.lua" afterPath="$PROJECT_DIR$/conf/config.lua" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/apps/init.lua" afterPath="$PROJECT_DIR$/init/init.lua" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/nginx.conf" afterPath="$PROJECT_DIR$/conf/nginx.conf" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,12 +24,92 @@
     <favorites_list name="thinklua" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="init.lua" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/init/init.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="1" column="26" lean-forward="false" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/init/bootstrap.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="func.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/system/func.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2288">
+              <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/system/model.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-10585">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="52">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nginx.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/nginx.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/config.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="858">
+              <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/system/app.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="456">
+              <first_editor relative-caret-position="15080">
                 <caret line="589" column="53" lean-forward="false" selection-start-line="589" selection-start-column="53" selection-end-line="589" selection-end-column="53" />
                 <folding />
               </first_editor>
@@ -33,44 +118,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="router.lua" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/system/router.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dispatcher.lua" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/system/dispatcher.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1820">
-              <caret line="76" column="43" lean-forward="false" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.lua" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/config/config.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="31" column="108" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="31" selection-end-column="116" />
-              <folding>
-                <marker date="1489052384779" expanded="true" signature="16:2181" ph="..." />
-                <marker date="1489052384779" expanded="true" signature="616:1733" ph="..." />
-                <marker date="1489052384779" expanded="true" signature="1071:1727" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -85,6 +141,8 @@
         <option value="$PROJECT_DIR$/apps/config/config.lua" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/lib/system/router.lua" />
+        <option value="$PROJECT_DIR$/conf/nginx.conf" />
+        <option value="$PROJECT_DIR$/init/init.lua" />
       </list>
     </option>
   </component>
@@ -136,11 +194,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -154,7 +208,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="init" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -168,25 +222,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thinklua" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thinklua" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -201,10 +237,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -221,6 +253,25 @@
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/conf" />
+      <recent name="$PROJECT_DIR$/lib/system" />
+      <recent name="$PROJECT_DIR$/init" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#com.sylvanaar.idea.Lua.run.LuaConfigurationType" factoryName="Lua Script">
@@ -379,6 +430,17 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
       <method />
     </configuration>
@@ -472,6 +534,7 @@
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -514,6 +577,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -593,10 +663,16 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
+      <command value="run" />
       <scripts />
       <node-interpreter value="project" />
       <envs />
@@ -624,7 +700,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2786000" />
+    <option name="totallyTimeSpent" value="3943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1037" extended-state="0" />
@@ -636,12 +712,12 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35407725" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.153125" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
@@ -654,11 +730,17 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="combo" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -672,30 +754,319 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apps/common/func.lua">
+    <entry file="file://$PROJECT_DIR$/apps/plugins/waf/api.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/waf/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/init.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/common/plugin.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/blacklist/controller.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/blacklist/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/stats/api.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/stats/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/traffic/api.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/traffic/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/waf/api.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/waf/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/init.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/common/plugin.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/openresty/nginx/conf/nginx.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="174" column="28" lean-forward="false" selection-start-line="174" selection-start-column="28" selection-end-line="174" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/openresty/nginx/conf/vhosts/thinklua.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="53" lean-forward="false" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/controllers/search.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/system/router.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/controllers/blog.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="32" column="7" lean-forward="false" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/system/dispatcher.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-208">
           <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/config/config.lua">
+    <entry file="file://$PROJECT_DIR$/apps/controllers/plugin.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="31" column="108" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="31" selection-end-column="116" />
-          <folding>
-            <marker date="1489052384779" expanded="true" signature="16:2181" ph="..." />
-            <marker date="1489052384779" expanded="true" signature="616:1733" ph="..." />
-            <marker date="1489052384779" expanded="true" signature="1071:1727" ph="..." />
-          </folding>
+        <state relative-caret-position="512">
+          <caret line="25" column="7" lean-forward="false" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/modules/comment/controller.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/modules/comment/model.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/controllers/index.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/controllers/test.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/system/registry.lua" />
+    <entry file="file://$PROJECT_DIR$/apps/plugins/blacklist/controller.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/blacklist/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/stats/api.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/stats/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/traffic/api.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/traffic/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/waf/api.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/waf/handler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="34" column="80" lean-forward="false" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/plugins/blacklist/api.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/system/app.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/common/plugin.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/system/func.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5044">
+          <caret line="194" column="43" lean-forward="false" selection-start-line="194" selection-start-column="43" selection-end-line="194" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="456">
+          <first_editor relative-caret-position="15080">
             <caret line="589" column="53" lean-forward="false" selection-start-line="589" selection-start-column="53" selection-end-line="589" selection-end-column="53" />
             <folding />
           </first_editor>
@@ -715,6 +1086,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/controllers/modules.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="15080">
+            <caret line="589" column="53" lean-forward="false" selection-start-line="589" selection-start-column="53" selection-end-line="589" selection-end-column="53" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/bootstrap.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/system/model.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10585">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/system/func.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2288">
+          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/nginx.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init/init.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="26" lean-forward="false" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
           <folding />
         </state>
       </provider>
