@@ -77,7 +77,7 @@ function _M.display(self, tpl, data)
         self:assign(data)
     end
     if not tpl then
-        local view_suffix = (config.routes.view_suffix and config.routes.view_suffix ~= '') and config.routes.view_suffix or '.html'
+        local view_suffix = (config.views.file_suffix and config.views.file_suffix ~= '') and config.views.file_suffix or '.html'
         if self.layer then
             tpl = self.layer..'/'..self.controller..'/'..self.action..view_suffix
         else

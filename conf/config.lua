@@ -38,6 +38,10 @@ local config = {
             --]]
         }
     },
+    views = {
+        file_suffix = '.html',
+
+    },
     security = {                                 -- 安全相关的设置
         password_salt = 'shixinke',              -- 密码加密字符串
         session = {
